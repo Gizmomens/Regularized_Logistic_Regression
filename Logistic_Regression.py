@@ -25,7 +25,6 @@ def map_features(data, degree):
 
     length = len(data)
 
-
     for i in range(length):
 
         mapped = []
@@ -40,7 +39,6 @@ def map_features(data, degree):
 
         mapped.append(data[i, 2])
         mapped_2.append(mapped)
-
 
 
     return (np.array(mapped_2))
@@ -73,6 +71,8 @@ def calculate_error(thetas, data, reg_const):
 
     return error
 
+
+
 def predict_prob(thetas, features):
 
     no_of_terms = len(thetas)
@@ -89,7 +89,6 @@ def sigmoid(current_thetas, data, index):
     length = len(data)
     no_of_gradients = len(data[0]) - 1
     val = 0
-
 
     for j in range(no_of_gradients):
         val += current_thetas[j] * data[index, j]
@@ -110,7 +109,6 @@ def gradient_step(current_thetas, data, learning_rate, reg_const):
     for i in range(no_of_gradients):
         gradients.append(0)
 
-
     for i in range(length):
 
         # calc predicted val
@@ -125,8 +123,6 @@ def gradient_step(current_thetas, data, learning_rate, reg_const):
 
         total_error += -y * np.log(pred_val) - (1 - y) * np.log(1 - pred_val)            #calculate cost at each itr for the plot
 
-
-    
     new_thetas.append(current_thetas[0] - (learning_rate * gradients[0]))
 
     for j in range(1, no_of_gradients):
